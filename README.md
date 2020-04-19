@@ -1,5 +1,5 @@
-# springBoot-kotlin-GraphQL-Query
-Example project for GraphQL query end point
+# springBoot-kotlin-GraphQL-Mutation
+Example project to create GraphQL mutation end points
 
 # Build command
 mvn clean install
@@ -7,10 +7,10 @@ mvn clean install
 # Run command
 mvn spring-boot:run
 
-# Example queries
-# Get all departments
-query {
-  departments {
+# Example mutations
+# Create employees
+mutation CreateEmployee($input: AddEmployeeInput!) {
+  addEmployee(input: $input) {
     departmentID
     code
     name
@@ -22,12 +22,24 @@ query {
       technicalSkills
     }
   }
-# Get department by code
-query {
-        department(code: IT) {
-          departmentID
-          code
-          name
-          address
-        }
-      }
+}
+#Query variables
+{"input": {"departmentID": 1,"name": "Albert George","designation": "PM"}}
+
+# Create departments
+mutation CreateDepartment($input: AddDepartmentInput!) {
+  addDepartment(input: $input) {
+    departmentID
+    code
+    name
+    address
+    employees {
+      employeeID
+      name
+      designation
+      technicalSkills
+    }
+  }
+}
+# Query variables
+{"input": {"code": "QA","name": "Quality Analyst","address": "QA-7890"}}
