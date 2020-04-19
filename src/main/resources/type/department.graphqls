@@ -1,0 +1,37 @@
+type Query {
+    department(code: DepartmentCode!): Department
+    departments: [Department!]!
+}
+type Mutation {
+    addEmployee(input: AddEmployeeInput!): Department!
+    addDepartment(input: AddDepartmentInput!): Department!
+}
+input AddEmployeeInput {
+    name: String!
+    designation: String!
+    technicalSkills: String
+}
+input AddDepartmentInput {
+    code: String!
+    name: String!
+    address: String!
+}
+type Department {
+    departmentID: Int!
+    code: DepartmentCode!
+    name: String!
+    address: String!
+    employees: [Employee!]!
+}
+
+type Employee{
+    employeeID: Int!
+    name: String!
+    designation: String!
+    technicalSkills: String
+}
+enum DepartmentCode {
+    SALES
+    IT
+    HR
+}
