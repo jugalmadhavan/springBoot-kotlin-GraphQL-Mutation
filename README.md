@@ -23,7 +23,7 @@ mutation CreateEmployee($input: AddEmployeeInput!) {
     }
   }
 }
-#Query variables
+# Query variables
 {"input": {"departmentID": 1,"name": "Albert George","designation": "PM"}}
 
 # Create departments
