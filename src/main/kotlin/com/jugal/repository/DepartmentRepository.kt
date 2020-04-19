@@ -10,6 +10,7 @@ import com.jugal.data.Employee
 @Transactional
 interface DepartmentRepository : JpaRepository<Department, Int> {
     fun findByCode(code: String): Department
+    fun findByDepartmentID(deptID: Int): Department
 }
 
 @Repository

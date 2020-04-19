@@ -6,16 +6,7 @@ type Mutation {
     addEmployee(input: AddEmployeeInput!): Department!
     addDepartment(input: AddDepartmentInput!): Department!
 }
-input AddEmployeeInput {
-    name: String!
-    designation: String!
-    technicalSkills: String
-}
-input AddDepartmentInput {
-    code: String!
-    name: String!
-    address: String!
-}
+
 type Department {
     departmentID: Int!
     code: DepartmentCode!
@@ -23,15 +14,27 @@ type Department {
     address: String!
     employees: [Employee!]!
 }
-
 type Employee{
     employeeID: Int!
     name: String!
     designation: String!
     technicalSkills: String
 }
+input AddEmployeeInput {
+    departmentID: Int!
+    name: String!
+    designation: String!
+    technicalSkills: String
+}
+input AddDepartmentInput {
+    code: DepartmentCode!
+    name: String!
+    address: String!
+}
 enum DepartmentCode {
     SALES
     IT
     HR
+    QA
+    PM
 }

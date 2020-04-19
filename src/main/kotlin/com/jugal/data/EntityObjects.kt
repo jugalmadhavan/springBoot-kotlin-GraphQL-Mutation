@@ -1,21 +1,24 @@
 package com.jugal.data
-import com.jugal.data.DepartmentCode.IT
+
 import com.jugal.data.DepartmentCode.SALES
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.EnumType.STRING
 import javax.persistence.Enumerated
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
 
-enum class DepartmentCode { SALES, IT, HR }
+enum class DepartmentCode { SALES, IT, HR, QA, PM }
 
 @Entity
 @Table(name = "department")
 data class Department(
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "dept_id")
-    val departmentID: Int,
+    val departmentID: Int = 0,
     @Enumerated(STRING)
     @Column(name = "dept_code")
     val code: DepartmentCode = SALES,
@@ -29,8 +32,9 @@ data class Department(
 @Table(name = "employee")
 data class Employee(
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "emp_id")
-    val employeeID: Int,
+    val employeeID: Int = 0,
     @Column(name = "dept_id")
     val deptID: Int,
     @Column(name = "emp_name")
